@@ -27,17 +27,17 @@ s = "stuuent" t = "un" output = "stet"
 方法1 ：
 
   - 遍历s，找到 u 和 n
-  - 调API删除找到的元素
+  - 调API删除找到u和n
   - 最后返回经过删除的s
 
-> 在JavaScript中，没有API能够删除指定的char，因此也不做演示了。 
+> 在JavaScript中，没有API能够删除指定的char，因此也不写了
 
-重点在于：删除元素的时间复杂度是O(n),一层遍历还是O(n),那么整个时间复杂度还是很高的。
+重点在于：删除元素的时间复杂度是O(n),一层遍历还是O(n),那么整个时间复杂度还是很高的O(n^2)
 
 方法2 ：快慢指针 + swap思想
 
 快指针物理意义：嗖嗖向前跑，遍历整个字符串。
-慢指针物理意义：所有不包含指定char的字符串，是最终的返回结果。
+慢指针物理意义：所有不包含指定char(u、n)的字符串，是最终的返回结果。
 
 总结为如下四步，如果还不是很理解的，可以看我画的图，以及标注好顺序
 
@@ -46,6 +46,8 @@ s = "stuuent" t = "un" output = "stet"
 - 交换完成后，快、慢指针一起向前走一步。（快指针本来就要向前走一步）
 - 当快指针走到空时，此时慢指针以左时处理好的字符串，可以作为结果返回。
 
+![20200706075855]( https://supyyy-1259673491.cos.ap-beijing.myqcloud.com/2020/pictures20200706075855.png)
+
 todo: 同类型的题：移动0
 
 ### 代码
@@ -53,7 +55,6 @@ todo: 同类型的题：移动0
 ```js
 let str = 'stuuent';
 t = ['u', 'n'];
-console.log(typeof new String(t));
 
 function removeChar(str, t) {
   let slow = 0, fast = 0;
