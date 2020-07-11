@@ -21,18 +21,6 @@ module.exports = {
       // 算法
       '/pages/ideology/': [
         {
-          title: 'ALG-Sort',   // 一级菜单名称
-          collapsable: true, // false为默认展开菜单, 默认值true是折叠,
-          sidebarDepth: 0,    //  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
-          children: [
-            ['/pages/ideology/BinarySearch/1-Classical Binary Search/', '1-Classical Binary Search'],
-            ['/pages/ideology/BinarySearch/2-Search in Sorted Matrix/', '2-Search in Sorted Matrix'],
-            ['/pages/ideology/BinarySearch/3-Closest in Sorted Array/', '3-Closest in Sorted Array'],
-            ['/pages/ideology/BinarySearch/4-Fisrt|Last Occurrence/', '4-Fisrt|Last Occurrence'],
-            ['/pages/ideology/BinarySearch/5-K Closest in Sorted Array/', '5-K Closest in Sorted Array'],
-          ]
-        },
-        {
           title: 'ALG-BinarySearch',   // 一级菜单名称
           collapsable: true, // false为默认展开菜单, 默认值true是折叠,
           sidebarDepth: 0,    //  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
@@ -54,7 +42,19 @@ module.exports = {
             ['/pages/ideology/DFS/3-硬币/', '3-硬币'],
             ['/pages/ideology/DFS/4-全排列/', '4-全排列'],
           ]
-        }
+        },
+        {
+          title: 'ALG-Sort',
+          collapsable: true,
+          sidebarDepth: 0,
+          children: [
+            ['/pages/ideology/Sort/归并排序/', '1 - 归并排序'],
+            ['/pages/ideology/Sort/快速排序/', '2 - 快速排序'],
+            ['/pages/ideology/Sort/选择排序/', '3 - 选择排序'],
+            ['/pages/ideology/Sort/插入排序/', '4 - 插入排序'],
+            ['/pages/ideology/Sort/冒泡排序/', '5 - 冒泡排序'],
+          ]
+        },
       ],
       // 数据结构
       "/pages/dataStructure/": [
@@ -63,12 +63,9 @@ module.exports = {
           collapsable: true,
           sidebarDepth: 0,
           children: [
-            ['/pages/dataStructure/string/1-String Removal/1-Remove Certain Characters.md', '1-a String Removal'],
-            ['/pages/dataStructure/string/1-String Removal/2-Remove Spaces', '1-b Remove Spaces'],
-            ['/pages/dataStructure/string/2-String De-duplication/1047. 删除字符串中的所有相邻重复项', '2-String De-duplication'],
-            ['/pages/dataStructure/string/3-String Replace/', '3-String Replace'],
-            ['/pages/dataStructure/string/4-String Reversal/344. 反转字符串.md', '4-a String Reversal'],
-            ['/pages/dataStructure/string/5-String SubString Finding/', '5-String SubString Finding'],
+            ['/pages/dataStructure/array/1-移动零/', '1 - 移动零'],
+            ['/pages/dataStructure/array/2-存在重复元素/', '2 - 存在重复元素'],
+            ['/pages/dataStructure/array/3-盛水最多的容器/', '3 - 盛水最多的容器'],
           ]
         },
         {
@@ -78,10 +75,10 @@ module.exports = {
           children: [
             ['/pages/dataStructure/string/1-String Removal/1-Remove Certain Characters.md', '1-a String Removal'],
             ['/pages/dataStructure/string/1-String Removal/2-Remove Spaces', '1-b Remove Spaces'],
-            ['/pages/dataStructure/string/2-String De-duplication/1047. 删除字符串中的所有相邻重复项', '2-String De-duplication'],
-            ['/pages/dataStructure/string/3-String Replace/', '3-String Replace'],
+            ['/pages/dataStructure/string/2-String De-duplication/1047. 删除字符串中的所有相邻重复项', '2 - String De-duplication'],
+            ['/pages/dataStructure/string/3-String Replace/', '3 - String Replace'],
             ['/pages/dataStructure/string/4-String Reversal/344. 反转字符串.md', '4-a String Reversal'],
-            ['/pages/dataStructure/string/5-String SubString Finding/', '5-String SubString Finding'],
+            ['/pages/dataStructure/string/5-String SubString Finding/', '5- String SubString Finding'],
           ]
         },
         {
@@ -92,10 +89,10 @@ module.exports = {
             ['/pages/dataStructure/tree/1-前中后/in-order', '1-a in-order'],
             ['/pages/dataStructure/tree/1-前中后/pre-order.md', '1-b pre-order'],
             ['/pages/dataStructure/tree/1-前中后/post-order.md', '1-c post-order'],
-            ['/pages/dataStructure/tree/2-平衡二叉树/', '2-平衡二叉树'],
-            ['/pages/dataStructure/tree/3-对称二叉树/', '3-对称二叉树'],
-            ['/pages/dataStructure/tree/4-BST/', '4-BST'],
-            ['/pages/dataStructure/tree/5-完全二叉树/', '5-完全二叉树'],
+            ['/pages/dataStructure/tree/2-平衡二叉树/', '2 - 平衡二叉树'],
+            ['/pages/dataStructure/tree/3-对称二叉树/', '3 - 对称二叉树'],
+            ['/pages/dataStructure/tree/4-BST/', '4 - BST'],
+            ['/pages/dataStructure/tree/5-完全二叉树/', '5 - 完全二叉树'],
           ]
         },
 
