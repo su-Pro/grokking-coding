@@ -15,8 +15,6 @@
 var cuttingRope = function (n) {
 	// 左大段 右小段 
 	let dp = new Array(n + 1).fill(1);
-	dp[1] = 1;
-	dp[2] = 1;
 	// 外层循环是每个左大段
 	for (let i = 3; i <= n; i++) {
 		// 内层循环是每个右小段

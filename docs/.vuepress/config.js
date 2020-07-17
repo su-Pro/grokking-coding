@@ -27,11 +27,16 @@ module.exports = {
 					sidebarDepth: 0,    //  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
 					children: [
 						['/pages/ideology/DP/1-fibo/', '1 - 斐波那契额'],
-						['/pages/ideology/DP/2-物理连续的子序列/', '2 - 物理连续的子序列'],
-						['/pages/ideology/DP/3-最大子序和/', '3 - 最大子序和'],
-						['/pages/ideology/DP/4-最长上升子序列/', '4 - 最长上升子序列'],
-						['/pages/ideology/DP/5-剪绳子/', '5 - 剪绳子'],
-						['/pages/ideology/DP/6-跳跃游戏I/', '6 - 跳跃游戏I'],
+						['/pages/ideology/DP/2-a最大子序和/', '2-a 最大子序和'],
+						['/pages/ideology/DP/2-b最长subarray/', '2-b 最长subarray'],
+						['/pages/ideology/DP/3-a最长上升子序列/', '3-a 最长上升子序列'],
+						// ['/pages/ideology/DP/3-b最大subarray和/', '3-b 最大subarray和'],
+						// ['/pages/ideology/DP/3-b-follow-up优化空间/', '3-b-follow-up: 优化空间'],
+						// ['/pages/ideology/DP/3-b-follow-up返回索引/', '3-b-follow-up: 返回索引'],
+						['/pages/ideology/DP/4-a剪绳子/', '4-a 剪绳子'],
+						['/pages/ideology/DP/4-b单词拆分/', '4-b 单词拆分'],
+						['/pages/ideology/DP/5-a跳跃游戏I/', '5-a 跳跃游戏I'],
+						['/pages/ideology/DP/5-b跳跃游戏II/', '5-b 跳跃游戏II'],
 					]
 				},
 				// DFS
