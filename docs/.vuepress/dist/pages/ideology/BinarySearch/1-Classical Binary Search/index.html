@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>704. 二分查找 | FE-basal</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="前端编码基础">
+    <link rel="preload" href="/assets/css/0.styles.34d67128.css" as="style"><link rel="preload" href="/assets/js/app.0e525f00.js" as="script"><link rel="preload" href="/assets/js/2.b17f950d.js" as="script"><link rel="preload" href="/assets/js/41.b572b535.js" as="script"><link rel="prefetch" href="/assets/js/10.6f7542c9.js"><link rel="prefetch" href="/assets/js/11.3152e7de.js"><link rel="prefetch" href="/assets/js/12.a83c61a6.js"><link rel="prefetch" href="/assets/js/13.d6133467.js"><link rel="prefetch" href="/assets/js/14.790e3b34.js"><link rel="prefetch" href="/assets/js/15.35a78e26.js"><link rel="prefetch" href="/assets/js/16.f90af881.js"><link rel="prefetch" href="/assets/js/17.9e759683.js"><link rel="prefetch" href="/assets/js/18.677345f2.js"><link rel="prefetch" href="/assets/js/19.cc8e3949.js"><link rel="prefetch" href="/assets/js/20.6f9036d1.js"><link rel="prefetch" href="/assets/js/21.4ef675df.js"><link rel="prefetch" href="/assets/js/22.d614b2b7.js"><link rel="prefetch" href="/assets/js/23.f92b7b00.js"><link rel="prefetch" href="/assets/js/24.e3de770f.js"><link rel="prefetch" href="/assets/js/25.72147f58.js"><link rel="prefetch" href="/assets/js/26.b6e23ac6.js"><link rel="prefetch" href="/assets/js/27.d1789643.js"><link rel="prefetch" href="/assets/js/28.afd2c3ee.js"><link rel="prefetch" href="/assets/js/29.f9abf3ac.js"><link rel="prefetch" href="/assets/js/3.9572dd2d.js"><link rel="prefetch" href="/assets/js/30.992d35d2.js"><link rel="prefetch" href="/assets/js/31.deb5f47b.js"><link rel="prefetch" href="/assets/js/32.091df943.js"><link rel="prefetch" href="/assets/js/33.53a9f730.js"><link rel="prefetch" href="/assets/js/34.dd0df4fb.js"><link rel="prefetch" href="/assets/js/35.fa4cf4b2.js"><link rel="prefetch" href="/assets/js/36.ca0582a0.js"><link rel="prefetch" href="/assets/js/37.37c10eb3.js"><link rel="prefetch" href="/assets/js/38.fe8a3712.js"><link rel="prefetch" href="/assets/js/39.ec4b70c6.js"><link rel="prefetch" href="/assets/js/4.7d5f245c.js"><link rel="prefetch" href="/assets/js/40.62272fcb.js"><link rel="prefetch" href="/assets/js/42.2d1d44cf.js"><link rel="prefetch" href="/assets/js/43.032b5ae4.js"><link rel="prefetch" href="/assets/js/44.cc0daf67.js"><link rel="prefetch" href="/assets/js/45.640f721e.js"><link rel="prefetch" href="/assets/js/46.d8e4ece0.js"><link rel="prefetch" href="/assets/js/47.86c7d5de.js"><link rel="prefetch" href="/assets/js/48.5a9ace13.js"><link rel="prefetch" href="/assets/js/49.89f8aedd.js"><link rel="prefetch" href="/assets/js/5.f8be39f3.js"><link rel="prefetch" href="/assets/js/50.46a02979.js"><link rel="prefetch" href="/assets/js/51.222c68d3.js"><link rel="prefetch" href="/assets/js/52.4f10d939.js"><link rel="prefetch" href="/assets/js/53.4f261fe8.js"><link rel="prefetch" href="/assets/js/54.2805cd6e.js"><link rel="prefetch" href="/assets/js/55.f3d36299.js"><link rel="prefetch" href="/assets/js/56.ed355e2c.js"><link rel="prefetch" href="/assets/js/57.50ffbb58.js"><link rel="prefetch" href="/assets/js/58.6fb2785d.js"><link rel="prefetch" href="/assets/js/59.1b886682.js"><link rel="prefetch" href="/assets/js/6.3bd2449c.js"><link rel="prefetch" href="/assets/js/60.27c02cbf.js"><link rel="prefetch" href="/assets/js/61.aa42b9f4.js"><link rel="prefetch" href="/assets/js/62.e545552f.js"><link rel="prefetch" href="/assets/js/63.33616ec7.js"><link rel="prefetch" href="/assets/js/64.ab7d3a9d.js"><link rel="prefetch" href="/assets/js/65.1d8cad50.js"><link rel="prefetch" href="/assets/js/66.a193ed8b.js"><link rel="prefetch" href="/assets/js/67.27574880.js"><link rel="prefetch" href="/assets/js/68.5a08446e.js"><link rel="prefetch" href="/assets/js/69.6c4a3967.js"><link rel="prefetch" href="/assets/js/7.445608fd.js"><link rel="prefetch" href="/assets/js/70.1bf1f771.js"><link rel="prefetch" href="/assets/js/71.8437104e.js"><link rel="prefetch" href="/assets/js/72.747d1ba0.js"><link rel="prefetch" href="/assets/js/73.e0905baa.js"><link rel="prefetch" href="/assets/js/74.4e1d74c3.js"><link rel="prefetch" href="/assets/js/8.c2aebe58.js"><link rel="prefetch" href="/assets/js/9.b9659022.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.34d67128.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">FE-basal</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/pages/map/" class="nav-link">
+  地图速览
+</a></div><div class="nav-item"><a href="/pages/dataStructure/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/pages/ideology/" class="nav-link router-link-active">
+  经典算法
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  交叉训练
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  剑指offer
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  番外-正则
+</a></div><div class="nav-item"><a href="https://github.com/dwanda" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/pages/map/" class="nav-link">
+  地图速览
+</a></div><div class="nav-item"><a href="/pages/dataStructure/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/pages/ideology/" class="nav-link router-link-active">
+  经典算法
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  交叉训练
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  剑指offer
+</a></div><div class="nav-item"><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/.html" class="nav-link">
+  番外-正则
+</a></div><div class="nav-item"><a href="https://github.com/dwanda" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ALG-DP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ALG-DFS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>ALG-BinarySearch</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/ideology/BinarySearch/1-Classical%20Binary%20Search/" aria-current="page" class="active sidebar-link">1 - Classical Binary Search</a></li><li><a href="/pages/ideology/BinarySearch/2-Search%20in%20Sorted%20Matrix/" class="sidebar-link">2 - Search in Sorted Matrix</a></li><li><a href="/pages/ideology/BinarySearch/3-Closest%20in%20Sorted%20Array/" class="sidebar-link">3 - Closest in Sorted Array</a></li><li><a href="/pages/ideology/BinarySearch/4-Fisrt%7CLast%20Occurrence/" class="sidebar-link">4 - Fisrt|Last Occurrence</a></li><li><a href="/pages/ideology/BinarySearch/5-K%20Closest%20in%20Sorted%20Array/" class="sidebar-link">5 - K Closest in Sorted Array</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ALG-Sort</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="_704-二分查找"><a href="#_704-二分查找" class="header-anchor">#</a> 704. 二分查找</h2> <p><a href="https://leetcode-cn.com/problems/binary-search/" target="_blank" rel="noopener noreferrer">704. 二分查找<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="描述"><a href="#描述" class="header-anchor">#</a> 描述</h3> <p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p> <p>示例 1:</p> <div class="language- extra-class"><pre class="language-text"><code>输入: nums = [-1,0,3,5,9,12], target = 9
+输出: 4
+解释: 9 出现在 nums 中并且下标为 4
+</code></pre></div><p>提示：</p> <p>你可以假设 nums 中的所有元素是不重复的。
+n 将在 [1, 10000]之间。
+nums 的每个元素都将在 [-9999, 9999]之间。</p> <h3 id="思路"><a href="#思路" class="header-anchor">#</a> 思路</h3> <p>经典二分法,不过我选择的是进行后续处理的写法。</p> <blockquote><p>这样思路更清晰</p></blockquote> <ul><li>定义left 、 right 指针，卡在数组的两端</li> <li>定义mid指针，位于left 和 right 的中央</li> <li>如果left、right没有相邻，且没有找到target，需要将范围不断缩小
+<ul><li>当nums[mid] &gt; target 时，说明最终结果一定在nums的左边，将right指针向小范围缩减</li> <li>当nums[mid] &lt; target 时，说明最终结果一定在nums的右边，将left指针向大范围缩减</li></ul></li> <li>如果left 和 right 相邻时，说明target一定是：left和right其中一个 或者 不存在
+<ul><li>无先后顺序，cover到条件即可</li></ul></li></ul> <h3 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */</span>
+<span class="token keyword">var</span> <span class="token function-variable function">search</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">nums<span class="token punctuation">,</span> target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// leftBaf rightBaf</span>
+  <span class="token keyword">let</span> leftBaf <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    rightBaf <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    mid <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token comment">// 相邻退出？</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>leftBaf <span class="token operator">&lt;</span> rightBaf <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mid <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>leftBaf <span class="token operator">+</span> rightBaf<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 找到目标结果</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">===</span> target<span class="token punctuation">)</span> <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
+    <span class="token comment">// 如果mid V &gt; target  需要将范围缩小到左边</span>
+    <span class="token comment">// 已经确定mid位上不是target，因此可以跳过</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&gt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      rightBaf <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      leftBaf <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// post process </span>
+  <span class="token comment">// left or right is target?</span>
+  <span class="token comment">// 先判断left 或 right 都可以，没有顺序要求</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>leftBaf<span class="token punctuation">]</span> <span class="token operator">===</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> leftBaf<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>rightBaf<span class="token punctuation">]</span> <span class="token operator">===</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> rightBaf<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="复杂度"><a href="#复杂度" class="header-anchor">#</a> 复杂度</h4> <p>Time: 最坏情况下需要遍历 1 / 2 num 的元素，所以总时间为 =&gt; O(logn)</p> <p>Space: O(1)</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.0e525f00.js" defer></script><script src="/assets/js/2.b17f950d.js" defer></script><script src="/assets/js/41.b572b535.js" defer></script>
+  </body>
+</html>
