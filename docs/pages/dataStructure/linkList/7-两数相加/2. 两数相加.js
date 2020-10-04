@@ -20,10 +20,10 @@ var addTwoNumbers = function (l1, l2) {
     let y = l2 ? l2.val : 0;
     let sum = x + y + payload;
     _run.next = new ListNode(sum % 10);
-    _run = _run.next;
     payload = parseInt(sum / 10)
 
     // 常规操作，保证“一对一对”进行
+    _run = _run.next;
     if (l1) l1 = l1.next;
     if (l2) l2 = l2.next;
   }

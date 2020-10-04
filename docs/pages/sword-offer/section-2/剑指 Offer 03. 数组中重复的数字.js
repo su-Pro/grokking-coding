@@ -59,8 +59,6 @@ var findRepeatNumber = function (nums) {
     if (curIdx !== idx) {
       if (curIdx === nums[curIdx]) return nums[curIdx];
       swapElement(nums, idx, curIdx);
-    } else {
-      // 相等时什么也不做
     }
   }
   return -1;

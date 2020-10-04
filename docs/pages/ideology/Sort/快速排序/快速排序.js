@@ -34,14 +34,10 @@ function _q(arr, left = 0, right = arr.length - 1) {
   _q(arr, pivot + 1, right);
 }
 function _p(arr, pivot, left, right) {
-  // 双挡板 左： 小于pivot 右：大于等于pivot
-  let pivotV = arr[pivot];
-  // 首先将屁股和pivotV调换，确保pivotV先放着队尾
-  swap(arr, pivot, right);
-  // 定义左右挡板
+  let pivotV = arr[pivot]; // 双挡板 左： 小于pivot 右：大于等于pivot
+  swap(arr, pivot, right); // 首先将屁股和pivotV调换，确保pivotV先放着队尾
   let leftBaf = left, rightBaf = right - 1; // 注意此时已经存在一个等于pivot的值，因此向前走一个；
-  // @TODO: DEBUG 循环条件
-  while (leftBaf <= rightBaf) {
+  while (leftBaf <= rightBaf) { // @TODO: DEBUG 循环条件
     if (arr[leftBaf] < pivotV) {
       // 满足挡板的物理意义
       leftBaf++
