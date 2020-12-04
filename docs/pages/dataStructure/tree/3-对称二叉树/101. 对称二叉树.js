@@ -1,10 +1,3 @@
-/*
- * @lc app=leetcode.cn id=101 lang=javascript
- *
- * [101] 对称二叉树
- */
-
-// @lc code=start
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -16,23 +9,24 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-function isSymmetic (root) {
-    if(!root) {
-        return true;
-    }
-    return helper(root,root);
-}
-function helper (left,right) {
+var isSymmetric = function (root) {
+  if (!root) {
+    return true;
+  }
+  function helperMath(left, right) {
     if (!left && !right) {
-        return true;
+      return true;
     }
     if (!left || !right) {
-        return false;
+      return false;
     }
-    if (left.value !== right.value) {
-        return false;
+    if (left.val !== right.val) {
+      return false;
     }
-    // 必须左边的左 和 右边的右 相等，<且> 左边的右 和 右边的左 相等 才满足。
-    return helper(left.left,right.right) && helper(left.right,right.left);
-}
-// @lc code=end
+    // case 4: left.val === right.val
+    return (
+      helperMath(left.left, right.right) && helperMath(left.right, right.left)
+    );
+  }
+  return helperMath(root, root);
+};

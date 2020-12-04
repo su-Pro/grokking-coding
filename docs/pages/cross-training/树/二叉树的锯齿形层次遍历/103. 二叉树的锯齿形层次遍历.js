@@ -9,35 +9,31 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var zigzagLevelOrder = function (root) {
-  if (root === null || root.length < 0) {
-    return []
-  }
-  let res = [],
-    queue = [root];
-  while (queue.length > 0) {
-    // 用于存放所有展开的内容
-    // 准备打印的每个数组
-    let neightBor = [],
-      print = [];
-    let len = queue.length;
-    for (let i = 0; i < queue.length; i++) {
-      // expand
-      print.push(queue[i].val);
-      // generator
-      if (queue[i].left) {
-        neightBor.push(queue[i].left)
-      }
-      if (queue[i].right) {
-        neightBor.push(queue[i].right)
-      }
+var zigzagLevelOrder = function(root) {
+  if(root === null) return [];
+  // 需要用一个变量来维护何时需要翻转结果，可以使用变量来表示 如果为true 说明需要翻转
+  let curNode = null,
+      pQueue = [root],
+      res = [],
+      curLayerRoots = [],
+      curpQueueLen = -1,
+      isEven = false; // 第一次为奇数层
+  while( pQueue.length > 0 ) {
+    curpQueueLen = pQueue.length;
+    curLayerRoots = [];
+    for(let i = 0;i < curpQueueLen;i++) {
+      curNode = pQueue.shift();
+      curLayerRoots.push(curNode.val);
+      if(curNode.left) { pQueue.push(curNode.left) }
+      if(curNode.right) { pQueue.push(curNode.right) }
     }
-    queue = neightBor
-    if (res.length % 2 !== 0) {
-      res.push(print.reverse())
-      continue;
-    }
-    res.push(print)
+    // 进行判断并修改标志位
+    if(isEven) { 
+      res.push(curLayerRoots.reverse())
+     } else {
+       res.push(curLayerRoots)
+     }
+    isEven = !isEven
   }
   return res;
 };

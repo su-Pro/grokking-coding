@@ -11,18 +11,32 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
+
+/**
+ * 思路ok，但是判断逻辑比较冗余
+ */
 var lowestCommonAncestor = function (root, p, q) {
-  // base case
-  if (root === null || root === p || root === q) return root;
+  // if(root === null) { return null }
+  // // 后续遍历
+  // if(root == p) return p;
+  // if(root == q) return q;
+  // 合并上述条件
+  if (root === null || root == p || root == q) {
+    return root;
+  }
   let left = lowestCommonAncestor(root.left, p, q);
   let right = lowestCommonAncestor(root.right, p, q);
-  // recusion rule
-  // case 1: 都没有命中
+  // 进行判断
+  // if(left && right) return root;
+  // if(left || right) return left || right;
+  // if(!left && !right) return null;
+  // 合并上述条件
   if (left === null && right === null) return null;
-  // case 3: 右无，左命中其中一个节点
-  if (left === null) return right;
-  // case 4: 左无，右命中其中一个节点
-  if (right === null) return left;
-  // case 2: 左右都有值，当前root就是最近公共祖先
-  return root;
+  if (left === null) {
+    return right;
+  }
+  if (right === null) {
+    return left;
+  }
+  return root; // 一定是最近公共祖先
 };
