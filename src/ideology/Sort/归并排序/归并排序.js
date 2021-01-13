@@ -1,36 +1,34 @@
-function mergeSort(arr) {
+/*
+ * @lc app=leetcode.cn id=912 lang=javascript
+ *
+ * [912] 排序数组
+ */
+
+// @lc code=start
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+function sortArray(arr) {
   if (arr === null || arr.length === 0) {
     return arr;
-  }
-  // 用来移动指针时能够正确访问元素
-  let temp = arr.slice();
-  console.log(temp)
-  helper(arr, temp, 0, arr.length - 1);
+  }    
+  helper(arr, 0, arr.length - 1);
   return arr;
-  /**
- * 向下递归拆分
- * @param arr
- * @param temp
- * @param start
- * @param end
- */
-  function helper(arr, temp, start, end) {
-    //base case
+  function helper(arr, start, end) {      
     if (start >= end) {
       return;
     }
-    let mid = start + (end - start) / 2;
-    helper(arr, temp, start, mid);
-    helper(arr, temp, mid + 1, end);
-    // 在当前层谁小移动谁,最后进行合并
-    merge(arr, temp, start, mid, end);
+    let mid = Math.floor(start + (end - start) / 2)
+    helper(arr,  start, mid);
+    helper(arr,  mid + 1, end);      
+    merge(arr,  start, mid, end);
   }
-  function merge(arr, temp, start, mid, end) {
-    //  定义左右移动指针 + 标识排序数组的当前索引index
-    let left = start, right = end, index = start;
-    // 持续移动的情况，左：没有超过mid 右：没有超出end
+  function merge(arr,  start, mid, end) { 
+      let temp = arr.slice();// 在比较大小往回merge 的时候，需要做参考    
+    let left = start, right = mid + 1, index = start;      
     while (left <= mid && right <= end) {
-      if (temp[left] <= temp[right]) {
+      if (temp[left] < temp[right]) {
         arr[index++] = temp[left++]
       } else {
         arr[index++] = temp[right++]
@@ -43,8 +41,5 @@ function mergeSort(arr) {
   }
 
 }
-
-let arr = [1, 3, 2];
-
-console.log(mergeSort(arr));
+// @lc code=end
 
