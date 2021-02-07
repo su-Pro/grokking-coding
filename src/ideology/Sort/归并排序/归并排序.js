@@ -1,45 +1,37 @@
-/*
- * @lc app=leetcode.cn id=912 lang=javascript
- *
- * [912] 排序数组
- */
-
-// @lc code=start
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
-function sortArray(arr) {
-  if (arr === null || arr.length === 0) {
-    return arr;
-  }    
-  helper(arr, 0, arr.length - 1);
-  return arr;
-  function helper(arr, start, end) {      
-    if (start >= end) {
+var sortArray = function (nums) {
+  mergeSort(nums, 0, nums.length - 1);
+  return nums;
+  function mergeSort(nums, left, right) {
+    if (left >= right) {
       return;
     }
-    let mid = Math.floor(start + (end - start) / 2)
-    helper(arr,  start, mid);
-    helper(arr,  mid + 1, end);      
-    merge(arr,  start, mid, end);
+    let mid = left + Math.floor((right - left) / 2);
+    mergeSort(nums, left, mid);
+    mergeSort(nums, mid + 1, right);
+    mergeArray(nums, left, mid, right);
   }
-  function merge(arr,  start, mid, end) { 
-      let temp = arr.slice();// 在比较大小往回merge 的时候，需要做参考    
-    let left = start, right = mid + 1, index = start;      
+  function mergeArray(nums, start, mid, end) {
+    let arrTemp = nums.slice(),
+      left = start,
+      right = mid + 1, // 两段数据集都要从最左端开始比较
+      idx = start;
     while (left <= mid && right <= end) {
-      if (temp[left] < temp[right]) {
-        arr[index++] = temp[left++]
+      // 谁小移谁
+      if (arrTemp[left] < arrTemp[right]) {
+        // 注意这里需要使用原数据集进行比较，why？
+        nums[idx++] = arrTemp[left++];
       } else {
-        arr[index++] = temp[right++]
+        nums[idx++] = arrTemp[right++];
       }
     }
-    //  处理最后有剩余情况，由于一刀两半，mid划分到左边，因此右边一定不会剩余
+    // 1. 都为空
+    // 2. right 为空，left有剩余
     while (left <= mid) {
-      arr[index++] = temp[left++]
+      nums[idx++] = arrTemp[left++];
     }
   }
-
-}
-// @lc code=end
-
+};

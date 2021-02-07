@@ -5,9 +5,10 @@ function insert(arr) {
   for (let i = 1; i < len; i++) {
     let temp = arr[i];
     let j = i - 1;
-    while ((j <= 0) && arr[j] > temp) { // 向后串1
-      arr[j + 1] = arr[j]
-      j--
+    while (j >= 0 && arr[j] > temp) {
+      // 向后串1
+      arr[j + 1] = arr[j];
+      j--;
     }
     // 大于 或者 到头
     arr[j + 1] = temp;
@@ -25,15 +26,15 @@ function binarySearchSort(arr) {
   for (let i = 1; i < length; i++) {
     let temp = arr[i]; // 待插入的元素
     // 找到待插入元素的位置
-    let index = binarySearch(arr, 0, i - 1, temp)
+    let index = binarySearch(arr, 0, i - 1, temp);
     //  run到 位置上
     let j = i;
     for (; j > index; j--) {
       // 逐一向后移动
-      arr[j] = arr[j - 1]
+      arr[j] = arr[j - 1];
     }
     // 找到位置 | 队尾
-    arr[index] = temp
+    arr[index] = temp;
   }
 }
 function binarySearch(arr, left, right, value) {
@@ -46,9 +47,11 @@ function binarySearch(arr, left, right, value) {
       target = mid;
       return target;
     }
-    if (arr[mid] < value) { //left ++
+    if (arr[mid] < value) {
+      //left ++
       left = mid + 1;
-    } else { // right--
+    } else {
+      // right--
       right = mid - 1;
     }
   }
