@@ -1,59 +1,40 @@
 /**
- * 不是原地算法...借用了O(n)的内存
- * @param {*} arr
+ * @param {number[]} nums
+ * @return {number[]}
  */
-function _q(arr) {
-  // base case
-  if (arr.length <= 1) return arr;
-  let len = arr.length;
-  let pivotIndex = Math.floor(len / 2);
-  let pivot = arr.splice(pivotIndex, 1)[0];
-  let left = [], right = [];
-
-  for (let i = 0; i < len; i++) {
-    arr[i] > pivot ? right.push(arr[i]) : left.push(arr[i]);
+var sortArray = function(nums) {
+  if(nums === null || nums.length <= 0) {
+      return nums;
   }
-  return _q(left).concat([pivot], _q(right));
-}
-/***
- * 改进版:双挡板思想
- * 1.找到pivot
- * 2.i挡板物理意义：所有比pivot小的item  右挡板物理意义：所有比pivot大或相等的item
- *
- * 两个挡板 三个区域
- *
- * 空间复杂度logn 
- *  */
-function _q(arr, left = 0, right = arr.length - 1) {
-  if (left >= right) return arr;
-  // 初始化pivot
-  let pivot = Math.floor(left + (right - left) / 2);
-  // 划分两个区域
-  pivot = _p(arr, pivot, left, right);
-  _q(arr, left, pivot - 1);
-  _q(arr, pivot + 1, right);
-}
-function _p(arr, pivot, left, right) {
-  let pivotV = arr[pivot]; // 双挡板 左： 小于pivot 右：大于等于pivot
-  swap(arr, pivot, right); // 首先将屁股和pivotV调换，确保pivotV先放着队尾
-  let leftBaf = left, rightBaf = right - 1; // 注意此时已经存在一个等于pivot的值，因此向前走一个；
-  while (leftBaf <= rightBaf) { // @TODO: DEBUG 循环条件
-    if (arr[leftBaf] < pivotV) {
-      // 满足挡板的物理意义
-      leftBaf++
-    } else if (arr[rightBaf] >= pivotV) {
-      // 同理满足物理意义
-      rightBaf--
-    } else {
-      // 2 case同时命中： arr[l] >= pivotV  arr[r] < pivotV
-      // 需要swap 并各向前一步
-      swap(arr, leftBaf++, rightBaf--)
-    }
+  quickSort(nums,0,nums.length - 1);
+  return nums;
+};
+function quickSort (nums,left,right) {
+  if(left >= right) {
+      return;
   }
-  // 循环结束后将pivot 归位
-  swap(arr, leftBaf, right)
-  return leftBaf;
+  let pivot = left + Math.floor((right - left) / 2);
+  pivot = partition(nums,pivot,left,right);
+  quickSort(nums,left,pivot - 1);
+  quickSort(nums,pivot + 1,right);
 }
-function swap(arr, v1, v2) {
-  [arr[v1], arr[v2]] = [arr[v2], arr[v1]];
+function partition (nums,pivot,left,right) {
+  let pivotVal = nums[pivot],
+      leftBaff = left,
+      rightBaff = right - 1;
+  swap(nums,pivot,right);
+  while(leftBaff <= rightBaff) {
+      if(nums[leftBaff] <= pivotVal) {
+          leftBaff++
+      }else if(nums[rightBaff] >= pivotVal) {
+          rightBaff--
+      }else {
+          swap(nums,leftBaff++,rightBaff--)
+      }
+  }
+  swap(nums,leftBaff,right);
+  return leftBaff;
+}
+function swap (nums,x,y) {
+  return [nums[x],nums[y]] = [nums[y],nums[x]]
 }

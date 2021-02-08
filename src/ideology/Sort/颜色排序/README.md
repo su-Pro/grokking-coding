@@ -2,28 +2,32 @@
 
 挡板思想，明确三个挡板四个区间。
 
+### 思路
+
+1. 明确三根指针i,j,run的物理意义
+2. 跑一遍demo，注意循环结束条件
+
 ### 代码
 
 ```js
 var sortColors = function(nums) {
-    let i = run = 0,
-        j = nums.length - 1;
-    //  Debug fail: 没有搞清楚j指针的真正物理意义，导致认为 run < j 也可以。
-    while(run <= j) {
-        if(nums[run] === 2) {
-            swap(nums,j--,run);           
-        }else if(nums[run] === 1) {
-            run++
+    let i = 0,
+        y = nums.length - 1,
+        r = 0;
+    while(r <= y) {
+        if(nums[r] === 2) {
+            swap(nums,r,y--)
+        }else if(nums[r] === 0) {
+            swap(nums,r++,i++)
         }else {
-            // 假设一定是0
-            swap(nums,i++,run++);            
+            r++
         }
-    }
-    function swap(arr,idx1,idx2) {
-        let temp = arr[idx1];
-        arr[idx1] = arr[idx2];
-        arr[idx2] = temp;
     }
     return nums;
 };
+function swap (nums,x,y) {
+    let temp = nums[y];
+    nums[y] = nums[x];
+    nums[x] = temp
+}
 ```
